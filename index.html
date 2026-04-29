@@ -152,21 +152,28 @@ h1 em{color:var(--y);font-style:normal;}
 
 /* ── FLOATING SOCIAL BUTTONS ── */
 .float-social{
-  position:fixed;bottom:24px;right:20px;
-  display:flex;flex-direction:column;gap:10px;
+  position:fixed;bottom:28px;right:20px;
+  display:flex;flex-direction:column;gap:12px;
   z-index:200;
 }
 .float-btn{
-  width:48px;height:48px;border-radius:50%;
+  width:52px;height:52px;border-radius:16px;
   display:flex;align-items:center;justify-content:center;
-  font-size:20px;
-  box-shadow:0 4px 18px rgba(0,0,0,.45);
-  transition:transform .2s,box-shadow .2s;
-  border:1px solid rgba(245,166,35,.2);
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s;
+  position:relative;overflow:hidden;
 }
-.float-btn:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(0,0,0,.55);}
-.float-btn.tg{background:#229ED9;}
-.float-btn.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.float-btn::before{
+  content:"";position:absolute;inset:0;
+  background:rgba(255,255,255,.12);
+  opacity:0;transition:opacity .2s;
+}
+.float-btn:hover::before{opacity:1;}
+.float-btn:hover{transform:scale(1.12) translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.6);}
+.float-btn:active{transform:scale(.96);}
+.float-btn svg{width:26px;height:26px;flex-shrink:0;position:relative;z-index:1;}
+.float-btn.tg{background:linear-gradient(145deg,#2AABEE,#1a8fcf);}
+.float-btn.ig{background:linear-gradient(145deg,#f9a825,#e8603c,#c2185b,#8e24aa);}
 
 /* ── FOOTER ── */
 footer{padding:32px 24px;border-top:1px solid var(--bdr);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
@@ -189,7 +196,7 @@ footer{padding:32px 24px;border-top:1px solid var(--bdr);display:flex;flex-direc
   .fw-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .prod-grid .free-card{grid-column:1/-1;}
-  .float-btn{width:52px;height:52px;font-size:22px;}
+  .float-btn{width:56px;height:56px;border-radius:18px;}
 }
 </style>
 </head>
@@ -197,8 +204,18 @@ footer{padding:32px 24px;border-top:1px solid var(--bdr);display:flex;flex-direc
 
 <!-- ПЛАВАЮЩИЕ КНОПКИ -->
 <div class="float-social">
-  <a href="https://t.me/guzell_usmanova" target="_blank" class="float-btn tg" title="Telegram">✈️</a>
-  <a href="https://www.instagram.com/guzellusmanova?igsh=dGJ4ajkzNmJqaDRn" target="_blank" class="float-btn ig" title="Instagram">📸</a>
+  <a href="https://t.me/guzell_usmanova" target="_blank" class="float-btn tg" title="Telegram">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21.93 4.57a1.5 1.5 0 0 0-1.6-.22L3.18 11.13a1.5 1.5 0 0 0 .07 2.78l3.75 1.26 1.44 4.55a1 1 0 0 0 1.73.34l2.14-2.43 4.07 3a1.5 1.5 0 0 0 2.33-.9l2.77-13.5a1.5 1.5 0 0 0-.55-1.66z" fill="white"/>
+    </svg>
+  </a>
+  <a href="https://www.instagram.com/guzellusmanova?igsh=dGJ4ajkzNmJqaDRn" target="_blank" class="float-btn ig" title="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+    </svg>
+  </a>
 </div>
 
 <!-- NAV -->
